@@ -1,16 +1,9 @@
-import { Keypair } from "@solana/web3.js";
-import { ThirdwebSDK } from "@thirdweb-dev/solana";
-import Bs58 from "bs58";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk/solana";
 import { config } from "dotenv";
-
 config();
 
 // Instantiate the SDK and pass in a signer
-const sdk = ThirdwebSDK.fromNetwork("devnet");
-const keypair = Keypair.fromSecretKey(
-  Buffer.from(Bs58.decode(process.env.PRIVATE_KEY))
-);
-sdk.wallet.connect(keypair);
+const sdk = ThirdwebSDK.fromPrivateKey("devnet", process.env.PRIVATE_KEY);
 
 // Define the metadata for your program
 const metadata = {
