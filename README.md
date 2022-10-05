@@ -25,11 +25,7 @@ PRIVATE_KEY=your_private_key
 Using the thirdweb SDK, you can create and deploy your own token on the Solana blockchain. We use `@solana/web3.js` package to create a wallet from the private key and pass it into thirdweb to initialize the SDK. Finally, we use the initialised sdk to create and deploy the token.
 
 ```js
-const sdk = ThirdwebSDK.fromNetwork("devnet");
-const keypair = Keypair.fromSecretKey(
-  Buffer.from(Bs58.decode(process.env.PRIVATE_KEY))
-);
-sdk.wallet.connect(keypair);
+const sdk = ThirdwebSDK.fromPrivateKey("devnet", process.env.PRIVATE_KEY);
 
 // Define the metadata for your program
 const metadata = {
